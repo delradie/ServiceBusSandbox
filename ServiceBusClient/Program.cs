@@ -47,6 +47,9 @@ while(true)
 
     ResponseMessage Response = SBResponse.Body.ToObjectFromJson<ResponseMessage>();
 
+    await SessionReceiver.CompleteMessageAsync(SBResponse);
+    await SessionReceiver.CloseAsync();
+
     Console.WriteLine($"Response to [{Response.OriginalMessageText}] sent from server at {Response.Timestamp}: {Response.ResponseText}");
 }
 
